@@ -98,7 +98,6 @@ if httpd:
 
             if not is_running:
                 log_print.info("PleXBMC Helper -> PleXBMC Helper has started")
-                xbmc.executebuiltin("XBMC.Notification(PleXBMC Helper has started,)")
 
             is_running = True
             if message_count % 1 == 0:
@@ -115,4 +114,3 @@ if httpd:
     requests.dumpConnections()
     client.stop_all()
     log_print.info("PleXBMC Helper -> PleXBMC Helper has been stopped")
-    xbmc.executebuiltin("XBMC.Notification(PleXBMC Helper has been stopped,)")
