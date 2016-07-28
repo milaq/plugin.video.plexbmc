@@ -114,7 +114,10 @@ class SubscriptionManager:
             params['time'] = info['time']
             params['duration'] = info['duration']
         serv = getServerByHost(self.server)
-        requests.getwithparams(serv.get('server', 'localhost'), serv.get('port', 32400), "/:/timeline", params, getPlexHeaders(), serv.get('protocol', 'http'))
+        if serv:
+            requests.getwithparams(serv.get('server', 'localhost'), serv.get('port', 32400), "/:/timeline", params, getPlexHeaders(), serv.get('protocol', 'http'))
+        else:
+            requests.getwithparams(self.server, self.port, "/:/timeline", params, getPlexHeaders(), self.protocol)
         log_print.debug("sent server notification with state = %s" % params['state'])
         WINDOW = xbmcgui.Window(10000)
         WINDOW.setProperty('plexbmc.nowplaying.sent', '1')
